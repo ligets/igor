@@ -7,7 +7,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="bg-gray-100 text-gray-900">
-
+    <x-header/>
     <div class="container mx-auto p-4">
         <h1 class="text-3xl font-bold mb-6">Список книг</h1>
 
