@@ -91,5 +91,6 @@
                 @endguest
             </nav>
         </header>
+        <div class="w-[100%] h-[2px] bg-gray-200"></div>
     </body>
 </html>
