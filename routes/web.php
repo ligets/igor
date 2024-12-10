@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\CartController;
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -19,9 +20,11 @@ Route::get('/', [BookController::class, 'index'])->name('home');
 Route::get('/books/create', [BookController::class, 'create'])->name('books.create');
 Route::post('/books', [BookController::class, 'store'])->name('books.store');
 
-Route::get('books/{bookId}/add', [BookController::class, 'addToCart'])->name('books.addToCart');
-Route::get('/cart', [BookController::class, 'showCart'])->name('cart.index');
-Route::delete('/cart/{cartItemId}', [BookController::class, 'removeFromCart'])->name('cart.remove');
+Route::post('cart/{bookId}', [CartController::class, 'addToCart'])->name('books.addToCart')->middleware("auth");
+Route::get('/cart', [CartController::class, 'showCart'])->name('cart.index')->middleware("auth");
+Route::delete('/cart/{cartItemId}', [CartController::class, 'removeFromCart'])->name('cart.remove')->middleware("auth");
+
+
 
 
 require __DIR__.'/auth.php';
