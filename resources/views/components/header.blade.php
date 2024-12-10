@@ -847,12 +847,12 @@
         }
     </style>
 </head>
-<body class="font-sans flex-col   antialiased bg-gray-100 w-[100%] ">
-<header class="flex text-[rgb(114,113,110)] items-center gap-2 py-4 lg:grid-cols-3 justify-around">
-    <div class="flex py-2 px-3 bg-[#d5da46] rounded-[10px]">
-        <p class="">POCO</p>
+<body class="font-sans flex-col  antialiased bg-gray-100 w-[100%] ">
+<header class="flex text-[rgb(114,113,110)] items-center gap-2 py-4 lg:grid-cols-3 justify-around bg-blue-500 font-sans">
+    <div class="flex py-2 px-3 rounded-[10px] text-white border">
+        <p class="text-[20px]">BookHub</p>
     </div>
-    <div class="flex lg:justify-center gap-[17px]">
+    <div class="flex lg:justify-center gap-[17px] text-white">
         <a>
             <a href="{{ route("home")}}">Главная</a>
         </a>
@@ -863,14 +863,14 @@
             <p>Где мы</p>
         </a>
     </div>
-    <nav class="-mx-3 flex justify-end">
+    <nav class="-mx-3 flex justify-end text-white">
         <a href="{{ route('cart.index') }}" class="mt-1.5 inline-block  rounded">🛒 Корзина</a>
         @auth
             <div class="sm:flex sm:items-center sm:ms-6">
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button
-                            class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
+                            class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
                             <div>{{ Auth::user()->name }}</div>
 
                             <div class="ms-1">
@@ -921,6 +921,11 @@
                 @endguest
             </nav>
         </header>
-        <div class="w-[100%] h-[2px] bg-gray-200"></div>
+        <div class="w-[50%] h-[50px] rounded-b-full mx-auto bg-blue-500 my-[-2px] z-10 justify-center flex">
+            <div class="w-[100%] flex justify-center">
+            <input placeholder="А какую книгу вы ещё не прочитали???" class="w-[90%] h-[90%] rounded-l-[20px] px-5">
+            </div>
+        </div>
+        <img class="absolute top-[80px] z-[-1]" src="{{ asset('storage/загруженное.png') }}" alt="Название книги">
     </body>
 </html>

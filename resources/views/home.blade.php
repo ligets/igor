@@ -6,13 +6,16 @@
     <title>Все книги</title>
     @vite('resources/css/app.css')
 </head>
-<body >
+<body>
     <header>
         <x-header/>
     </header>
+    
     <div class="container mx-auto py-10">
-        <h1 class="text-2xl font-bold mb-5">Список книг</h1>
+        
 
+        <h1 class="text-2xl font-bold mb-5">Список книг</h1>
+        
         <div class="grid grid-cols-5 gap-4">
             @foreach ($books as $book)
                 <div class="border p-4 rounded">
