@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Role;
+use App\Models\Status;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -28,6 +29,15 @@ class DatabaseSeeder extends Seeder
         ]);
         Role::create([
             'name' => 'user'
+        ]);
+        Status::create([
+            'name' => 'В обработке'
+        ]);
+        Status::create([
+            'name' => 'Выполнен'
+        ]);
+        Status::create([
+            'name' => 'Отменен'
         ]);
     }
 }

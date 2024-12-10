@@ -40,7 +40,6 @@ class BookController extends Controller
         $book->author = $request->author;
         $book->description = $request->description;
         $book->price = $request->price;
-        $book->owner_id = auth()->id();
 
         // Обработка загрузки обложки
         if ($request->hasFile('cover_image')) {
