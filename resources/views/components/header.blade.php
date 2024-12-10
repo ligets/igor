@@ -35,7 +35,7 @@
             </div>
             <nav class="-mx-3 flex justify-end">
                 @auth
-                    <div class="hidden sm:flex sm:items-center sm:ms-6">
+                    <div class="sm:flex sm:items-center sm:ms-6">
                         <x-dropdown align="right" width="48">
                             <x-slot name="trigger">
                                 <button

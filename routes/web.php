@@ -20,7 +20,7 @@ Route::get('/', [BookController::class, 'index'])->name('home');
 Route::get('/books/create', [BookController::class, 'createBook'])->name('books.create')->middleware(["auth", "role:seller,admin"]);
 Route::post('/books', [BookController::class, 'store'])->middleware(["auth", "role:seller,admin"])->name('books.store');
 
-Route::post('cart/{bookId}', [CartController::class, 'addToCart'])->name('books.addToCart')->middleware("auth");
+Route::post('/cart/{bookId}', [CartController::class, 'addToCart'])->name('books.addToCart')->middleware("auth");
 Route::get('/cart', [CartController::class, 'showCart'])->name('cart.index')->middleware("auth");
 Route::delete('/cart/{cartItemId}', [CartController::class, 'removeFromCart'])->name('cart.remove')->middleware("auth");
 
