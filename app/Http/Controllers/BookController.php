@@ -10,16 +10,16 @@ class BookController extends Controller
 {
     // Отображение всех книг на главной странице
     public function index()
-{
-    $books = Book::all(); // Получаем все книги
-    return view('home', compact('books')); // Возвращаем представление home
-}
-    
-public function create()
-{
-    return view('books.create'); // Здесь предполагается, что у вас есть представление books/create.blade.php
-}
+    {
+        $books = Book::all();
+        return view('home', compact('books'));
+    }
+    public function getById(int $id)
+    {
+        $book = Book::findOrFail($id);
 
+        return view('', compact('book'));
+    }
 public function store(Request $request)
 {
     // Валидация данных формы
