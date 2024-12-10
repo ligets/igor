@@ -18,7 +18,7 @@
             </style>
     </head>
     <body class="font-sans flex-col   antialiased bg-gray-100 w-[100%] ">
-                    <header class="flex text-[#72716E] items-center gap-2 py-10 lg:grid-cols-3 justify-around">
+                    <header class="flex text-[#72716E] items-center gap-2 py-4 lg:grid-cols-3 justify-around">
                     <div>
                     <p>POCO</p>
                     </div>
@@ -86,7 +86,10 @@
                                     @endif
                                 @endauth
                             </nav>
-                        @endif
+                        
                     </header>
+                    @endif
+                    <div class="w-[100%] h-[2px] bg-gray-200">
+                    </div>
     </body>
 </html>
