@@ -10,4 +10,9 @@ class Book extends Model
     use HasFactory;
 
     protected $fillable = ['title', 'author', 'description', 'cover_image', 'price'];
+
+    public function orders(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(Order::class)->withPivot('quantity')->withTimestamps();
+    }
 }

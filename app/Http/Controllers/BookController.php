@@ -15,7 +15,14 @@ class BookController extends Controller
     // Отображение всех книг на главной странице
     public function index()
     {
-        $books = Book::all();
+        $query = request()->input('search'); // Получаем значение из GET-параметра search
+
+        $books = Book::query()
+            ->when($query, function ($q) use ($query) {
+                $q->where('title', 'like', '%' . $query . '%')
+                    ->orWhere('author', 'like', '%' . $query . '%');
+            })
+            ->get();
         return view('home', compact('books'));
     }
     public function getById(int $id)
