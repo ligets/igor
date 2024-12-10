@@ -23,7 +23,9 @@ Route::get('/', [BookController::class, 'index'])->name('home');
 Route::get('/books/create', [BookController::class, 'create'])->name('books.create');
 Route::post('/books', [BookController::class, 'store'])->name('books.store');
 
-
+Route::get('books/{bookId}/add', [BookController::class, 'addToCart'])->name('books.addToCart');
+Route::get('/cart', [BookController::class, 'showCart'])->name('cart.index');
+Route::delete('/cart/{cartItemId}', [BookController::class, 'removeFromCart'])->name('cart.remove');
 
 
 require __DIR__.'/auth.php';

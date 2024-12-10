@@ -4,26 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Все книги</title>
-    @vite(['resources/css/app.css'])
+    @vite('resources/css/app.css')
 </head>
-<body class="bg-gray-100 text-gray-900">
-    <x-header/>
-    <div class="container mx-auto p-4">
-        <h1 class="text-3xl font-bold mb-6">Список книг</h1>
+<body>
+    <div class="container mx-auto py-10">
+        <h1 class="text-2xl font-bold mb-5">Список книг</h1>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="grid grid-cols-3 gap-4">
             @foreach ($books as $book)
-                <div class="bg-white shadow rounded p-4">
-                    @if ($book->cover_image)
-                        <img src="{{ asset('storage/' . $book->cover_image) }}" alt="{{ $book->title }}" class="w-full h-48 object-cover rounded">
-                    @endif
-                    <h2 class="text-xl font-semibold mt-4">{{ $book->title }}</h2>
-                    <p class="text-gray-600">Автор: {{ $book->author }}</p>
-                    <p class="text-gray-700 mt-2">{{ Str::limit($book->description, 100) }}</p>
+                <div class="border p-4 rounded">
+                    <h3 class="font-bold text-xl">{{ $book->title }}</h3>
+                    <p>{{ $book->author }}</p>
+                    <p>{{ Str::limit($book->description, 100) }}</p>
+                    <a href="{{ route('books.addToCart', $book->id) }}" class="bg-blue-500 text-white px-4 py-2 rounded mt-2 inline-block">В корзину</a>
                 </div>
             @endforeach
         </div>
-    </div>
 
+        <a href="{{ route('cart.index') }}" class="mt-5 inline-block bg-green-500 text-white px-4 py-2 rounded">Перейти в корзину</a>
+    </div>
 </body>
 </html>
