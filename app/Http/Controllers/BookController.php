@@ -9,7 +9,13 @@ class BookController extends Controller
 {
     public function create()
     {
-        return view('books.create'); // Загружаем страницу для создания книги
+        return view('books.create');
+    }
+
+    public function index()
+    {
+        $books = Book::all();
+        return view('home', compact('books'));
     }
 
     public function store(Request $request)

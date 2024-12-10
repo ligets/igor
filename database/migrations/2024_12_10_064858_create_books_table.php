@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('author');
             $table->text('description')->nullable();
-            $table->string('cover_image')->nullable(); // Путь к обложке
+            $table->string('cover_image')->nullable();
             $table->timestamps();
         });
     }

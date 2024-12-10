@@ -19,10 +19,7 @@ Route::middleware('auth')->group(function () {
 });
 
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
-
-
-
+Route::get('/', [BookController::class, 'index'])->name('home');
 Route::get('/books/create', [BookController::class, 'create'])->name('books.create');
 Route::post('/books', [BookController::class, 'store'])->name('books.store');
 
