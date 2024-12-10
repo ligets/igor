@@ -23,7 +23,13 @@
                     <p>{{ $book->author }}</p>
                     <p>{{ Str::limit($book->description, 100) }}</p>
                     <p>{{ $book->price }}</p>
-                    <a href="{{ route('books.addToCart', $book->id) }}" class="bg-blue-500 text-white px-4 py-2 rounded mt-2 inline-block">В корзину</a>
+                    <form action="{{ route('books.addToCart', $book->id) }}" method="POST" class="inline-block">
+                        @csrf
+                        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded mt-2">
+                            В корзину
+                        </button>
+                    </form>
+
                 </div>
             @endforeach
         </div>
