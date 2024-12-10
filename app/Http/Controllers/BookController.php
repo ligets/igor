@@ -8,6 +8,10 @@ use App\Models\Cart;
 
 class BookController extends Controller
 {
+    public function createBook() {
+        return view("books.create");
+    }
+
     // Отображение всех книг на главной странице
     public function index()
     {
@@ -20,22 +24,33 @@ class BookController extends Controller
 
         return view('', compact('book'));
     }
-public function store(Request $request)
-{
-    // Валидация данных формы
-    $validated = $request->validate([
-        'title' => 'required|string|max:255',
-        'author' => 'required|string|max:255',
-        'price' => 'required|numeric',
-        // Добавьте другие поля, если нужно
-    ]);
+    public function store(Request $request)
+    {
+        $request->validate([
+            'title' => 'required|string',
+            'author' => 'required|string',
+            'description' => 'string',
+            'price' => 'required|numeric',
+            'cover_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
 
-    // Создание книги в базе данных
-    Book::create($validated);
+        // Сохраняем данные книги
+        $book = new Book;
+        $book->title = $request->title;
+        $book->author = $request->author;
+        $book->description = $request->description;
+        $book->price = $request->price;
 
-    // Перенаправление на страницу со списком книг (или любую другую страницу)
-    return redirect()->route('books.index');
-}
+        // Обработка загрузки обложки
+        if ($request->hasFile('cover_image')) {
+            $filePath = $request->file('cover_image')->store('cover_images', 'public');
+            $book->cover_image = $filePath;
+        }
+
+        $book->save(); // Сохраняем книгу в базу данных
+
+        return redirect()->route('books.create')->with('success', 'Книга добавлена успешно!');
+    }
 
     // Добавление книги в корзину
     public function addToCart($bookId)

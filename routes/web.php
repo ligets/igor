@@ -16,7 +16,7 @@ Route::middleware('auth')->group(function () {
 
 
 Route::get('/', [BookController::class, 'index'])->name('home');
-Route::get('/books/create', [BookController::class, 'create'])->name('books.create');
+Route::get('/books/create', [BookController::class, 'createBook'])->name('books.create');
 Route::post('/books', [BookController::class, 'store'])->name('books.store');
 
 Route::get('books/{bookId}/add', [BookController::class, 'addToCart'])->name('books.addToCart');

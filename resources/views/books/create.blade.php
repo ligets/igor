@@ -41,6 +41,14 @@
                 @enderror
             </div>
 
+            <!-- Поле для цены -->
+            <div class="mb-4">
+                <label for="price" class="block text-sm font-medium">Прайс</label>
+                <input id="price" name="price" class="border px-4 py-2 w-[15%]" value="{{ old('price') }}"/>
+                @error('price')
+                    <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
+                @enderror
+            </div>
             <!-- Поле для загрузки изображения обложки -->
             <div class="mb-4">
                 <label for="cover_image" class="block text-sm font-medium">Обложка</label>
