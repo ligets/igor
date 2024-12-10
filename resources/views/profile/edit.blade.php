@@ -2,8 +2,8 @@
     <header>
         <x-header/>
     </header>
-    <div>
-        <aside class="border">
+    <div class="flex">
+        <aside class="border-r-[2px] border-gray-200">
         <p>879687535</p>
         </aside>
         <div>
