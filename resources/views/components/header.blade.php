@@ -18,11 +18,11 @@
             </style>
     </head>
     <body class="font-sans flex-col   antialiased bg-gray-100 w-[100%] ">
-        <header class="flex text-[#72716E] items-center gap-2 py-10 lg:grid-cols-3 justify-around">
-            <div>
-                <p>POCO</p>
+        <header class="flex text-[rgb(114,113,110)] items-center gap-2 py-4 lg:grid-cols-3 justify-around">
+            <div class="flex py-2 px-3 bg-[#d5da46] rounded-[10px]">
+                <p class="">POCO</p>
             </div>
-            <div class="flex lg:justify-center gap-[10px]">
+            <div class="flex lg:justify-center gap-[17px]">
                 <a>
                     <p>Главная</p>
                 </a>
@@ -35,11 +35,11 @@
             </div>
             <nav class="-mx-3 flex justify-end">
                 @auth
-                    <div class="hidden sm:flex sm:items-center sm:ms-6">
+                    <div class="sm:flex sm:items-center sm:ms-6">
                         <x-dropdown align="right" width="48">
                             <x-slot name="trigger">
                                 <button
-                                    class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
+                                    class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
                                     <div>{{ Auth::user()->name }}</div>
 
                                     <div class="ms-1">
@@ -87,7 +87,6 @@
                     >
                         Register
                     </a>
-
                 @endguest
             </nav>
         </header>
