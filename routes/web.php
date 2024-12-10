@@ -17,8 +17,8 @@ Route::middleware('auth')->group(function () {
 
 
 Route::get('/', [BookController::class, 'index'])->name('home');
-Route::get('/books/create', [BookController::class, 'createBook'])->name('books.create');
-Route::post('/books', [BookController::class, 'store'])->middleware("auth")->name('books.store');
+Route::get('/books/create', [BookController::class, 'createBook'])->name('books.create')->middleware(["auth", "role:seller,admin"]);
+Route::post('/books', [BookController::class, 'store'])->middleware(["auth", "role:seller,admin"])->name('books.store');
 
 Route::post('cart/{bookId}', [CartController::class, 'addToCart'])->name('books.addToCart')->middleware("auth");
 Route::get('/cart', [CartController::class, 'showCart'])->name('cart.index')->middleware("auth");
