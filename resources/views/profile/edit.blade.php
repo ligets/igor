@@ -3,10 +3,15 @@
         <x-header/>
     </header>
     <div class="flex">
-        <aside class="border-r-[2px] border-gray-200">
-        <p>879687535</p>
+        <aside class="border-r-[2px] border-gray-200 flex w-[25%] wrap items-center flex-col text-center">
+            <a href="/profile" class="py-4 w-[60%] flex justify-center">
+                <p class="{{ Request::is('profile') ? 'border-b-2' : '' }}">Профиль</p>
+            </a>
+            <a href="/books/create" class="py-4 w-[60%] flex justify-center">
+                <p class="{{ Request::is('books/create') ? 'border-b-2' : '' }}">Создание товара</p>
+            </a>
         </aside>
-        <div>
+        <div class="w-[45%] mx-auto">
             <x-slot name="header">
                 <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                     {{ __('Profile') }}
