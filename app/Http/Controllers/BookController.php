@@ -18,6 +18,13 @@ class BookController extends Controller
         return view('home', compact('books'));
     }
 
+    public function getById(int $id)
+    {
+        $book = Book::findOrFail($id);
+
+        return view('', compact('book'));
+    }
+
     public function store(Request $request)
     {
         $request->validate([
