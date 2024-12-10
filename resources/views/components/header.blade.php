@@ -24,7 +24,7 @@
             </div>
             <div class="flex lg:justify-center gap-[17px]">
                 <a>
-                    <p>Главная</p>
+                    <a href="{{ route("home")}}">Главная</a>
                 </a>
                 <a>
                     <p>О нас</p>
@@ -34,6 +34,7 @@
                 </a>
             </div>
             <nav class="-mx-3 flex justify-end">
+            <a href="{{ route('cart.index') }}" class="mt-1.5 inline-block  rounded">🛒 Корзина</a>
                 @auth
                     <div class="sm:flex sm:items-center sm:ms-6">
                         <x-dropdown align="right" width="48">
@@ -90,5 +91,6 @@
                 @endguest
             </nav>
         </header>
+        <div class="w-[100%] h-[2px] bg-gray-200"></div>
     </body>
 </html>
