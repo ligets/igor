@@ -852,7 +852,7 @@
         <a>
             <a href="{{ route("home")}}">Главная</a>
         </a>
-        <a>
+        <a href="/about">
             <p>О нас</p>
         </a>
         <a>
