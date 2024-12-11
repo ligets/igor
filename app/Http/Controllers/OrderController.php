@@ -23,16 +23,6 @@ class OrderController extends Controller
         return view("profile.orderId", compact('order'));
     }
 
-    public function cancel(int $order_id) {
-        $order = Order::findOrFail($order_id);
-        if ($order->user_id != auth()->id() && auth()->user()->role->name != 'admin') {
-            abort(403);
-        }
-        $order->status_id = Status::where('name', 'Отменен')->first()->id;
-        $order->save();
-        return redirect()->route("");
-    }
-
     public function getAdmin() {
         $orders = Order::where("status_id", Status::where('name', 'В обработке')->first()->id)->get();
         return view("profile.orderAdmin", compact('orders'));
@@ -90,6 +80,13 @@ class OrderController extends Controller
         }
         $order->status_id = Status::where("name", "Отменен")->first()->id;
         $order->save();
-        return redirect()->route('profile.orders');
+        return redirect(url()->previous());
+    }
+
+    public function confirm(int $order_id) {
+        $order = Order::findOrFail($order_id);
+        $order->status_id = Status::where('name', 'Выполнен')->first()->id;
+        $order->save();
+        return redirect(url()->previous());
     }
 }

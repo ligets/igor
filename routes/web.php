@@ -33,6 +33,7 @@ Route::get('/profile/orders/admin', [OrderController::class, 'getAdmin'])->name(
 
 Route::post('/orders', [OrderController::class, 'store'])->name("order.store")->middleware("auth");
 Route::delete('/orders/{id}', [OrderController::class, 'destroy'])->name('order.destroy')->middleware("auth");
+Route::post('/orders/{id}', [OrderController::class, 'confirm'])->name('order.confirm')->middleware("auth");
 Route::get("/profile/orders/{id}", [OrderController::class, 'getById'])->name('order.id')->middleware("auth");
 
 Route::get('/about', function () {

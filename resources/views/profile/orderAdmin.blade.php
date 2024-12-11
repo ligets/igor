@@ -26,7 +26,7 @@
                 {{ __('Orders') }}
             </h2>
         </x-slot>
-        <div >
+        <div>
             <div class="grid grid-cols-4 gap-x-10 gap-y-5 mt-[30px]">
                 @foreach($orders as $order)
                     <div class="flex gap-2 flex-col border border-gray-400 rounded-2xl p-3 w-[250px]">
@@ -35,9 +35,12 @@
                         <p>Сумма: {{ $order->total_price }}</p>
                         <p>Cтатус: {{ $order->status->name }}</p>
                         <p>Дата: {{$order->created_at}}</p>
-                        <div class="flex gap-x-3 h-[40px]">
-                            <a href="{{ route('order.id', $order->id) }}" class="!bg-blue-500 text-white px-5 py-2 rounded w-[120px] text-center">Подробнее</a>
+                        <div class="flex gap-x-2 h-[40px]">
                             @if ($order->status->name == "В обработке")
+                                <form action="{{ route('order.confirm', $order->id) }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded">Подтвердить</button>
+                                </form>
                                 <form action="{{ route('order.destroy', $order->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
@@ -45,6 +48,7 @@
                                 </form>
                             @endif
                         </div>
+                        <a href="{{ route('order.id', $order->id) }}" class="!bg-blue-500 text-white px-5 py-2 rounded text-center">Подробнее</a>
                     </div>
                 @endforeach
             </div>
