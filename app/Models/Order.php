@@ -21,4 +21,9 @@ class Order extends Model
     {
         return $this->belongsTo(Status::class);
     }
+
+    public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 }
