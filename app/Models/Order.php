@@ -16,4 +16,9 @@ class Order extends Model
     {
         return $this->belongsToMany(Book::class, 'book_order_mtm')->withPivot('quantity');
     }
+
+    public function status(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Status::class);
+    }
 }

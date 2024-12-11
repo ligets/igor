@@ -75,4 +75,14 @@ class OrderController extends Controller
         return $this->index();
     }
 
+    public function destroy(int $id) {
+        $order = Order::findOrFail($id);
+        if ($order->status->name != 'В обработке') {
+            abort(400);
+        }
+        $order->status_id = Status::where("name", "Отменен")->first()->id;
+        $order->save();
+        return $this->index();
+    }
+
 }
