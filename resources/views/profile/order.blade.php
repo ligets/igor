@@ -25,7 +25,7 @@
         </x-slot>
         <div>
             @foreach($orders as $order)
-                {{$order}}
+                {{ $order->id }}
             @endforeach
         </div>
     </div>

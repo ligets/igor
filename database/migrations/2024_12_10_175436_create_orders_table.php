@@ -21,9 +21,7 @@ return new class extends Migration
             $table->id();
             $table->float("total_price");
             $table->foreignId("user_id")->constrained()->onDelete('cascade');
-            $table->foreignId("status_id")->constrained(
-                table: 'statuses'
-            )->onDelete('cascade');
+            $table->foreignId("status_id")->constrained()->onDelete('cascade');
             $table->timestamps();
         });
 
@@ -39,6 +37,8 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::dropIfExists('book_order_mtm');
         Schema::dropIfExists('orders');
+        Schema::dropIfExists('statuses');
     }
 };
