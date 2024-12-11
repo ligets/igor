@@ -58,4 +58,33 @@ class BookController extends Controller
 
         return redirect()->route('books.create')->with('success', 'Книга добавлена успешно!');
     }
+
+    public function update(Request $request, int $id)
+    {
+        $request->validate([
+            'title' => 'required|string',
+            'author' => 'required|string',
+            'description' => 'nullable|string',
+            'price' => 'required|numeric',
+            'cover_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        $book = Book::findOrFail($id); // Находим книгу
+
+        // Обновляем данные книги
+        $book->title = $request->title;
+        $book->author = $request->author;
+        $book->description = $request->description;
+        $book->price = $request->price;
+
+        // Обработка загрузки новой обложки
+        if ($request->hasFile('cover_image')) {
+            $filePath = $request->file('cover_image')->store('cover_images', 'public');
+            $book->cover_image = $filePath;
+        }
+
+        $book->save(); // Сохраняем изменения
+
+        return redirect()->route('books.index')->with('success', 'Книга успешно обновлена!');
+    }
 }
