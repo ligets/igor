@@ -882,7 +882,7 @@
 
                     <x-slot name="content">
                         <x-dropdown-link :href="route('profile.edit')">
-                            {{ __('Profile') }}
+                            {{ __('Профиль') }}
                         </x-dropdown-link>
 
                         <!-- Authentication -->
@@ -892,7 +892,7 @@
                             <x-dropdown-link :href="route('logout')"
                                              onclick="event.preventDefault();
                                                                                 this.closest('form').submit();">
-                                {{ __('Log Out') }}
+                                {{ __('Выйти') }}
                             </x-dropdown-link>
                         </form>
                     </x-slot>
@@ -923,6 +923,6 @@
              <button type="submit" class="bg-white rounded h-[90%] outline-none border-none rounded-r-[40px] mr-[4px]">🔍</button>
             </div>
         </form>
-        <img class="absolute top-[80px] z-[-1]" src="{{ asset('storage/загруженное.png') }}" alt="Название книги">
+        <img class="absolute top-[80px] z-[-1]" src="{{ asset('./загруженное.png') }}" alt="Название книги">
     </body>
 </html>

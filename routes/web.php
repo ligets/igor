@@ -21,7 +21,8 @@ Route::get('/', [BookController::class, 'index'])->name('home');
 Route::get('/books/create', [BookController::class, 'createBook'])->name('books.create')->middleware(["auth", "role:admin"]);
 Route::post('/books', [BookController::class, 'store'])->middleware(["auth", "role:admin"])->name('books.store');
 Route::get('/books/{id}', [BookController::class, 'getById'])->name('books.show');
-
+Route::get('/books/{id}/edit', [BookController::class, 'edit'])->name('books.edit');
+Route::put('/books/{id}', [BookController::class, 'update'])->name('books.update');
 
 Route::post('/cart/{bookId}', [CartController::class, 'addToCart'])->name('books.addToCart')->middleware("auth");
 Route::get('/cart', [CartController::class, 'showCart'])->name('cart.index')->middleware("auth");

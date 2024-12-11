@@ -20,16 +20,17 @@
         <x-header/>
     </header>
     <div class="container mx-auto py-10 flex">
-        <div class="flex flex-col">
+        <div class="flex flex-col ">
             <img src="{{ asset('storage/' . $book->cover_image) }}" alt="{{ $book->title }}" class=" h-[500px] object-cover rounded float-left">
-            <div class="flex justify-between"> 
+            <div class="flex justify-between mt-[10px]"> 
                 <form action="{{ route('books.addToCart', $book->id) }}" method="POST" class="inline-block">
                         @csrf
-                        <button type="submit" class="!bg-blue-500 text-white px-4 py-2 rounded mt-2 w-[120px] text-center">
+                        <button type="submit" class="!bg-blue-500 text-white px-4 py-2 rounded w-[120px] text-center">
                                     В корзину
                         </button>
                 </form>
-                <a href="{{ route('home') }}" class="!bg-blue-500 text-white px-5 py-2 rounded mt-2 w-[120px] text-center">Назад</a>
+                 <a href="{{ route('books.edit', $book->id) }}" class=" inline-block bg-green-500 text-white px-4 py-2 rounded">Редактировать</a>
+                <a href="{{ route('home') }}" class="!bg-blue-500 text-white px-5 py-2 rounded w-[120px] text-center">Назад</a>
             </div>
         </div>
         <div class="ml-[5%]">

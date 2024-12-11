@@ -7,12 +7,16 @@
     @vite('resources/css/app.css')
 </head>
 <body>
+    <header>
+        <x-header/>
+    </header>
     <div class="container mx-auto py-10">
         <h1 class="text-2xl font-bold mb-5">Ваша корзина</h1>
 
-        <div class="space-y-4">
+        <div class="space-y-4 grid grid-cols-4">
             @foreach ($cartItems as $item)
-                <div class="border p-4 rounded flex justify-between">
+                <div class="border p-4 rounded flex flex-col justify-between">
+                    <img src="{{ asset('storage/' . $item->book->cover_image) }}" alt="{{ $item->book->title }}" class="w-full h-48 object-cover rounded">
                     <div>
                         <h3 class="font-bold text-xl">{{ $item->book->title }}</h3>
                         <p>{{ $item->quantity }} шт.</p>
