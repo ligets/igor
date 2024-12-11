@@ -27,7 +27,7 @@ class OrderController extends Controller
 
     public function getAdmin() {
         $orders = Order::where("status_id", Status::where('name', 'В обработке')->first()->id)->get();
-        return view("", compact('orders'));
+        return view("orderAdmin", compact('orders'));
     }
 
     public function store() {
@@ -72,7 +72,7 @@ class OrderController extends Controller
         else {
             abort(400);
         }
-        return $this->index();
+        return redirect()->route('profile.orders');
     }
 
     public function destroy(int $id) {
@@ -82,7 +82,6 @@ class OrderController extends Controller
         }
         $order->status_id = Status::where("name", "Отменен")->first()->id;
         $order->save();
-        return $this->index();
+        return redirect()->route('profile.orders');
     }
-
 }

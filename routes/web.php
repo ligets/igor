@@ -28,9 +28,11 @@ Route::post('/cart/{bookId}', [CartController::class, 'addToCart'])->name('books
 Route::get('/cart', [CartController::class, 'showCart'])->name('cart.index')->middleware("auth");
 Route::delete('/cart/{cartItemId}', [CartController::class, 'removeFromCart'])->name('cart.remove')->middleware("auth");
 
-Route::get('/profile/orders', [OrderController::class, 'index'])->middleware("auth");
+Route::get('/profile/orders', [OrderController::class, 'index'])->name('profile.orders')->middleware("auth");
+Route::get('/profile/orders/admin', [OrderController::class, 'getAdmin'])->name('profile.orders.admin')->middleware(["auth", "role:admin"]);
 
 Route::post('/orders', [OrderController::class, 'store'])->name("order.store")->middleware("auth");
+Route::delete('/orders/{id}', [OrderController::class, 'destroy'])->name('order.destroy')->middleware("auth");
 
 
 require __DIR__.'/auth.php';
