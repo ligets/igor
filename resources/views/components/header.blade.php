@@ -383,10 +383,6 @@
             height: 100%
         }
 
-        .min-h-screen {
-            min-height: 100vh
-        }
-
         .w-full {
             width: 100%
         }
@@ -908,7 +904,7 @@
                 href="{{ route('login') }}"
                 class="rounded-md px-3 py-2 bg-blue-500 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
             >
-                Log in
+                Вход
             </a>
 
 
@@ -916,7 +912,7 @@
                         href="{{ route('register') }}"
                         class="rounded-md bg-blue-500s px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
                     >
-                        Register
+                        Регистрация
                     </a>
                 @endguest
             </nav>
