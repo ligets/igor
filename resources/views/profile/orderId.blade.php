@@ -15,6 +15,7 @@
 
 
     <h1 class="text-2xl font-bold mb-5">Заказ №{{ $order->id }}. Общая сумма: {{ $order->total_price }} руб.</h1>
+    <h2 class="text-xl font-bold mb-5">Статус: {{$order->status->name}}</h2>
     <div class="grid grid-cols-5 gap-4">
         @foreach ($order->books as $book)
             <div class="border p-4 rounded">

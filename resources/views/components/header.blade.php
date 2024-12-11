@@ -917,7 +917,7 @@
                 @endguest
             </nav>
         </header>
-        <form method="GET" action="{{url()->current()}}" class="w-[50%] h-[50px] rounded-b-full mx-auto bg-blue-500 my-[-2px] z-10 justify-center flex">
+        <form method="GET" action="{{route("home")}}" class="w-[50%] h-[50px] rounded-b-full mx-auto bg-blue-500 my-[-2px] z-10 justify-center flex">
             <div class="w-[100%] flex justify-center">
             <input name="search" value="{{ request('search') }}" placeholder="А какую книгу вы ещё не прочитали???" class="outline-none border-none w-[90%] h-[90%] rounded-l-[20px] px-5">
              <button type="submit" class="bg-white rounded h-[90%] outline-none border-none rounded-r-[40px] mr-[4px]">🔍</button>
