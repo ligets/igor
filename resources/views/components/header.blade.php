@@ -855,7 +855,7 @@
         <a href="/about">
             <p>О нас</p>
         </a>
-        <a>
+        <a href="/where">
             <p>Где мы</p>
         </a>
     </div>

@@ -39,5 +39,9 @@ Route::get('/about', function () {
     return view("about");
 });
 
+Route::get('/where', function () {
+    return view("where");
+});
+
 
 require __DIR__.'/auth.php';
