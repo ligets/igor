@@ -12,7 +12,7 @@
                     <p class="{{ Request::is('books/create') ? 'border-b-2' : '' }}">Создание товара</p>
                 </a>
                 <a href="/profile/orders/admin" class="py-4 w-[60%] flex justify-center">
-                    <p class="{{ Request::is('books/create') ? 'border-b-2' : '' }}">Не выполненные заказы</p>
+                    <p class="{{ Request::is('/profile/orders/admin') ? 'border-b-2' : '' }}">Не выполненные заказы</p>
                 </a>
 
             @else
