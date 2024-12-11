@@ -85,6 +85,11 @@ class BookController extends Controller
 
         $book->save(); // Сохраняем изменения
 
-        return redirect()->route('books.index')->with('success', 'Книга успешно обновлена!');
+        return redirect()->route('books.show',$book->id)->with('success', 'Книга успешно обновлена!');
+    }
+    public function edit(int $id)
+    {
+        $book = Book::findOrFail($id);
+        return view('books.edit', compact('book'));
     }
 }
