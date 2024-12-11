@@ -29,7 +29,7 @@ class BookController extends Controller
     {
         $book = Book::findOrFail($id);
 
-        return view('', compact('book'));
+        return view('books.show', compact('book'));
     }
     public function store(Request $request)
     {
