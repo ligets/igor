@@ -15,6 +15,14 @@ class OrderController extends Controller
         return view("profile.order", compact('orders'));
     }
 
+    public function getById(int $id) {
+        $order = Order::with("books")->findOrFail($id);
+        if ($order->user_id != auth()->id() && auth()->user()->role->name != 'admin') {
+            abort(403);
+        }
+        return view("profile.orderId", compact('order'));
+    }
+
     public function cancel(int $order_id) {
         $order = Order::findOrFail($order_id);
         if ($order->user_id != auth()->id() && auth()->user()->role->name != 'admin') {
@@ -27,7 +35,7 @@ class OrderController extends Controller
 
     public function getAdmin() {
         $orders = Order::where("status_id", Status::where('name', 'В обработке')->first()->id)->get();
-        return view("orderAdmin", compact('orders'));
+        return view("profile.orderAdmin", compact('orders'));
     }
 
     public function store() {
