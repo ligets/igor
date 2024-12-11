@@ -29,5 +29,7 @@ Route::delete('/cart/{cartItemId}', [CartController::class, 'removeFromCart'])->
 
 Route::get('/profile/orders', [OrderController::class, 'index'])->middleware("auth");
 
+Route::post('/orders', [OrderController::class, 'store'])->name("order.store")->middleware("auth");
+
 
 require __DIR__.'/auth.php';

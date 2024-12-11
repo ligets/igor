@@ -13,6 +13,6 @@ class Book extends Model
 
     public function orders(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
-        return $this->belongsToMany(Order::class)->withPivot('quantity')->withTimestamps();
+        return $this->belongsToMany(Order::class, 'book_order_mtm')->withPivot('quantity');
     }
 }

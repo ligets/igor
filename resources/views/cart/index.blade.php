@@ -27,8 +27,14 @@
                 </div>
             @endforeach
         </div>
-
-        <a href="{{ route('home') }}" class="mt-5 inline-block bg-blue-500 text-white px-4 py-2 rounded">Назад к книгам</a>
+        <div class="flex justify-between mt-5">
+            <a href="{{ route('home') }}" class="inline-block bg-blue-500 text-white px-4 py-2 rounded">Назад к книгам</a>
+            <form action="{{ route('order.store') }}" method="POST" class="inline-block">
+                @csrf
+                <input name="type" type="text" value="cart" class="hidden">
+                <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded">Оформить заказ</button>
+            </form>
+        </div>
     </div>
 </body>
 </html>
