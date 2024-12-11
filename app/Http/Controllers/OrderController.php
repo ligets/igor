@@ -36,7 +36,7 @@ class OrderController extends Controller
             'book_id' => 'integer|min:0',
             'quantity' => 'integer|min:0'
         ]);
-        if ($req->type == 'cart') {
+        if (request()->type == 'cart') {
             $cartSummary = Cart::where('user_id', auth()->id())
                 ->with('book')
                 ->get()
@@ -55,23 +55,24 @@ class OrderController extends Controller
             ]);
             foreach ($cartSummary as $item) {
                 $order->books()->attach([
-                    $item->book_id => ['quantity' => $item->quantity]
+                    $item['book_id'] => ['quantity' => $item['quantity']]
                 ]);
             }
+            Cart::where("user_id", auth()->id())->delete();
         }
-        else if ($req->type == 'book') {
-            $book = Book::findOrFail($req->book_id);
+        else if ($req['type'] == 'book') {
+            $book = Book::findOrFail($req['book_id']);
             $order = Order::create([
-                'total_price' => $book->price * $req->quantity,
+                'total_price' => $book->price * $req['quantity'],
                 'user_id' => auth()->id(),
                 'status_id' => Status::where('name', 'В обработке')->first()->id
             ]);
-            $order->books()->attach($book->id, ['quantity' => $req->quantity]);
+            $order->books()->attach($book->id, ['quantity' => $req['quantity']]);
         }
         else {
             abort(400);
         }
-        return view('', compact('order'));
+        return $this->index();
     }
 
 }

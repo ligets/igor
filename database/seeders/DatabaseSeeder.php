@@ -25,9 +25,6 @@ class DatabaseSeeder extends Seeder
             'name' => 'admin'
         ]);
         Role::create([
-            'name' => 'seller'
-        ]);
-        Role::create([
             'name' => 'user'
         ]);
         Status::create([
