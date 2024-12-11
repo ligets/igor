@@ -28,7 +28,12 @@
         </x-slot>
         <div>
             @foreach($orders as $order)
-                {{ $order->id }}
+                <div>
+                    <p>Id-Заказа {{ $order->id }}</p>
+                    <p>Сумма {{ $order->total_price }}</p>
+                    <p>Cтатус {{ $order->status_id }}</p>
+                    <a href="{{ route('home') }}" class="!bg-blue-500 text-white px-5 py-2 rounded w-[120px] text-center">Назад</a>
+                </div>
             @endforeach
         </div>
     </div>
