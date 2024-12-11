@@ -12,7 +12,7 @@ class OrderController extends Controller
 {
     public function index() {
         $orders = Order::where('user_id', auth()->id())->orderBy('updated_at', 'asc')->get();
-        return view("", compact('orders'));
+        return view("profile.order", compact('orders'));
     }
 
     public function cancel(int $order_id) {

@@ -7,9 +7,15 @@
             <a href="/profile" class="py-4 w-[60%] flex justify-center">
                 <p class="{{ Request::is('profile') ? 'border-b-2' : '' }}">Профиль</p>
             </a>
-            <a href="/books/create" class="py-4 w-[60%] flex justify-center">
-                <p class="{{ Request::is('books/create') ? 'border-b-2' : '' }}">Создание товара</p>
-            </a>
+            @if(auth()->user()->role->name == 'admin')
+                <a href="/books/create" class="py-4 w-[60%] flex justify-center">
+                    <p class="{{ Request::is('books/create') ? 'border-b-2' : '' }}">Создание товара</p>
+                </a>
+            @else
+                <a href="/profile/orders" class="py-4 w-[60%] flex justify-center">
+                    <p class="{{ Request::is('profile/orders') ? 'border-b-2' : '' }}">Мои заказы</p>
+                </a>
+            @endif
         </aside>
         <div class="w-[45%] mx-auto">
             <x-slot name="header">
